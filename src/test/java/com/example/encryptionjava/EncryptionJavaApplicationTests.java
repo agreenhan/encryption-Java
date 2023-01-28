@@ -8,6 +8,7 @@ class EncryptionJavaApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
 }
