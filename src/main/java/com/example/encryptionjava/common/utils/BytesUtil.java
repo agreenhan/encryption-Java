@@ -53,13 +53,33 @@ public class BytesUtil {
     }
 
     /**
-     * @Description: 将十六进制字符串转换成byte数组
+     * @Description: AES 将十六进制字符串转换成byte数组
      * @Author: jht
      * @Date: 2023/1/28 19:30
      * @Return:
      */
-    public static byte[] formHexToBytes(String key) {
+    public static byte[] formHexToBytesForAES(String key) {
         if (!verifyKey(key)) {
+            return null;
+        }
+        byte[] bytes = new byte[key.length() / 2];
+        char[] chars = key.toCharArray();
+        for (int i = 0; i < chars.length; i = i + 2) {
+            int high = Integer.parseInt(String.valueOf(chars[i]), 16);
+            int low = Integer.parseInt(String.valueOf(chars[i + 1]), 16);
+            bytes[i / 2] = (byte) (high * 16 + low);
+        }
+        return bytes;
+    }
+
+    /**
+     * @Description: AES 将十六进制字符串转换成byte数组
+     * @Author: jht
+     * @Date: 2023/1/28 19:30
+     * @Return:
+     */
+    public static byte[] formHexToBytesForRSA(String key) {
+        if (key == null) {
             return null;
         }
         byte[] bytes = new byte[key.length() / 2];

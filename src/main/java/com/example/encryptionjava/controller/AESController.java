@@ -46,7 +46,7 @@ public class AESController {
         if (!BytesUtil.verifyKey(key)) {
             return Result.failed().message("请输入合法的密钥！");
         }
-        byte[] aesKey = BytesUtil.formHexToBytes(key);
+        byte[] aesKey = BytesUtil.formHexToBytesForAES(key);
         // AES加密
         byte[] cipher = AESUtil.encryptAES(source.getBytes(), aesKey);
         String outcome = BytesUtil.formBytesToHex(cipher);
@@ -67,8 +67,8 @@ public class AESController {
         }
         //解密
         byte[] plain;
-        byte[] sourceBytes = BytesUtil.formHexToBytes(source);
-        byte[] keyBytes = BytesUtil.formHexToBytes(key);
+        byte[] sourceBytes = BytesUtil.formHexToBytesForAES(source);
+        byte[] keyBytes = BytesUtil.formHexToBytesForAES(key);
         try {
             plain = AESUtil.decryptAES(sourceBytes, keyBytes);
         } catch (Exception e) {
