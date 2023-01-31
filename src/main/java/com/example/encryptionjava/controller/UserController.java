@@ -2,7 +2,6 @@ package com.example.encryptionjava.controller;
 
 import com.example.encryptionjava.VO.UserVO;
 import com.example.encryptionjava.pojo.Result;
-import com.example.encryptionjava.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +15,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/user")
 @CrossOrigin
 public class UserController {
-    @Autowired
-    private UserService userService;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Result login(){
